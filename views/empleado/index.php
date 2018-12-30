@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'headerOptions' => ['class' => 'kartik-sheet-style'],
             'expandOneOnly' => true
         ],
-        ['attribute' => 'id', 'visible' => false],
+        ['attribute' => 'id', 'visible' => true],
         [
             'attribute' => 'id_empresa',
             'label' => Yii::t('app', 'Empresa'),
