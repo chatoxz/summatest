@@ -17,8 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create').' '.Yii::t('app', 'Empresa')        , ['create'], ['class' => 'btn btn-success add-modal-data', 'title' => Yii::t('app', 'Create').' '.
-            Yii::t('app', 'Empresa') ]) ?>
+        <?= Html::a(Yii::t('app', 'Create').' '.Yii::t('app', 'Empresa'),
+            ['create'], ['class' => 'btn btn-success add-modal-data', 'title' => Yii::t('app', 'Create').' '.
+                Yii::t('app', 'Empresa') ]) ?>
         <?= Html::a(Yii::t('app', 'Create').' '.Yii::t('app', 'Empleado'),
             ['/empleado/create'], ['class' => 'btn btn-info add-modal-data', 'title' => Yii::t('app', 'Create').' '.
                 Yii::t('app', 'Empleado') ]) ?>
@@ -83,7 +84,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'toolbar' => [
             '{export}',
             //'{toggleData}',
-            ],
+        ],
     ]); ?>
 
 </div>
