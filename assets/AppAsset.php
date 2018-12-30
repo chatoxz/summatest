@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        //'https://use.fontawesome.com/releases/v5.3.1/css/all.css',
     ];
     public $js = [
         'js/main.js',
@@ -28,6 +29,6 @@ class AppAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        'rmrevin\yii\fontawesome\CdnFreeAssetBundle',
+        //'rmrevin\yii\fontawesome\CdnFreeAssetBundle',
     ];
 }

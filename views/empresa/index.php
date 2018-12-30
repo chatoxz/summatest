@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="empresa-index" id="id_gridview">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><i class="far fa-igloo"></i><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a(Yii::t('app', 'Create').' '.Yii::t('app', 'Empresa'),
@@ -77,13 +77,24 @@ $this->params['breadcrumbs'][] = $this->title;
             'type' => GridView::TYPE_PRIMARY,
             'heading' => '<span class="glyphicon glyphicon-book"></span>  ' . Html::encode($this->title),
         ],
-        'export' => [
-            'fontAwesome' => false
-        ],
         // your toolbar can include the additional full export menu
         'toolbar' => [
-            '{export}',
-            //'{toggleData}',
+            ExportMenu::widget([
+                'dataProvider' => $dataProvider,
+                'columns' => $gridColumn,
+                'target' => ExportMenu::TARGET_BLANK,
+                'fontAwesome' => false,
+                'dropdownOptions' => [
+                    'label' => 'Full',
+                    'class' => 'btn btn-default',
+                    'itemsBefore' => [
+                        '<li class="dropdown-header"></li>',
+                    ],
+                ],
+                'exportConfig' => [
+                    //ExportMenu::FORMAT_PDF => false
+                ]
+            ]) ,
         ],
     ]); ?>
 

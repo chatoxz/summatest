@@ -69,7 +69,10 @@ $config = [
         ],
     ],
     'modules' => [
-        'gridview' => ['class' => 'kartik\grid\Module']
+        'gridview' => [
+            'class' => 'kartik\grid\Module',
+            //'bsVersion' => '4.x'
+        ]
     ],
     'params' => $params,
 ];
