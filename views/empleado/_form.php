@@ -51,13 +51,13 @@ use yii\widgets\ActiveForm;
     <?php
     $forms = [
         [
-            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('app', 'Disenador')),
+            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('app', 'Tipo de Disenador')),
             'content' => $this->render('_formDisenador', [
                 'row' => \yii\helpers\ArrayHelper::toArray($model->disenadors),
             ]),
         ],
         [
-            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('app', 'Programador')),
+            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode(Yii::t('app', 'Tipo de Programador')),
             'content' => $this->render('_formProgramador', [
                 'row' => \yii\helpers\ArrayHelper::toArray($model->programadors),
             ]),
