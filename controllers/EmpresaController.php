@@ -147,6 +147,8 @@ class EmpresaController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->findModel($id)->getEmpleados();
+        var_dump(count($this->findModel($id)));
         $this->findModel($id)->deleteWithRelated();
 
         return $this->redirect(['index']);

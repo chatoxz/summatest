@@ -86,7 +86,7 @@ $("body").on("click ontouchend",".modalButton", function (event) {
 //FUNCIONAMIENTO DEL formulario con AJAX
 $("body").on("beforeSubmit", "form#id_form", function () {
     var form = $(this);
-    $(".resultado").removeClass("hidden").html("<div class='loader_tricolor_chico' style='margin: auto;display: block'></div>");
+    $(".resultado").html("<div class='loader_tricolor_chico' style='margin: auto;display: block'></div>");
     var formData = new FormData(this);
     //esto sirve para que tome el valor que esta en el button submit, si actualiza no tiene valor, pero si es el boton
     //"guardar como nuevo" agrego ese dato al form, sino no funca con ajax.(ese valor sirve en el controller para que ver si guarda como nuevo o no)
@@ -101,7 +101,7 @@ $("body").on("beforeSubmit", "form#id_form", function () {
     }).done (function (response){
         //seteo la respuesta enviada desde el controlador
         if(!response || response.length === 0) {
-            $(".resultado").html("<span style='font-size: 16px;margin:auto' class='glyphicon glyphicon-ok' aria-hidden='true'></span> Accion realizada.");
+            $(".resultado").removeClass("hidden").html("<span style='font-size: 16px;margin:auto' class='glyphicon glyphicon-ok' aria-hidden='true'></span> Accion realizada.");
             setTimeout(function(){
                 //escondo el modal y recargo con pjax el gridview si esta definido con id_gridview
                 $("#modal").modal("hide");
@@ -111,18 +111,12 @@ $("body").on("beforeSubmit", "form#id_form", function () {
                     $.pjax.reload({container:'#id_gridview'});
             }, 2000);
         }else {
-            $(".resultado").addClass("hidden");
-            if (window.location.href == "http://affrontend/persona/carga_nuevo_socio"){
-                $("#modalContent").html(response);
-            }
-            else{
-                $(".resultado").html(response);
-                $(".div-sin-modal").html(response);
-            }
+            $("#modalContent").html(response);
+            //$(".div-sin-modal").html(response);
         }
     }).fail(function (xhr, ajaxOptions, thrownError){
         // window.location.replace("/site/error");
-        $(".resultado").html("Algo salio mal, intentalo de nuevo. De lo contrario ponte en contacto con Appe.");
+        $(".resultado").removeClass("hidden").html("Algo salio mal, intentalo de nuevo. De lo contrario ponte en contacto con Administrador.");
         console.log("LOG -> status: "+xhr.status+" thrownError: "+thrownError);
         // $("#modalContent").html("LOG -> status: "+xhr.status+" thrownError: "+thrownError);
     });

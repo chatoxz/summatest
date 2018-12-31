@@ -22,5 +22,28 @@ class Empleado extends BaseEmpleado
             [['nombre', 'apellido'], 'string', 'max' => 155]
         ]);
     }
-	
+    public function getTipoLenguajes(){
+        $tipos = \app\models\TipoProgramador::find()->select(['tipo_programador.nombre'])->joinWith('programadors')
+            ->where(['id_empleado' => $this->id])->all();
+        $string = '';
+        foreach ($tipos as $tipo){
+            $string .= $tipo->nombre.' - ';
+        }
+        if(empty($string)) {
+            return "No es programador";
+        }
+        return rtrim($string, ' - ');
+    }
+    public function getTipoDisenadores(){
+        $tipos = \app\models\TipoProgramador::find()->select(['tipo_disenador.nombre'])->joinWith('disenadors')
+            ->where(['id_empleado' => $this->id])->all();
+        $string = '';
+        foreach ($tipos as $tipo){
+            $string .= $tipo->nombre.' - ';
+        }
+        if(empty($string)) {
+            return "No es diseñador";
+        }
+        return rtrim($string, ' - ');
+    }
 }
